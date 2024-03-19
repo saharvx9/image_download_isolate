@@ -7,5 +7,13 @@ const images = [
   "https://www.designboom.com/wp-content/uploads/2023/03/peugeot-no-concept-hydrogen-car-designboom-01.jpg",
   "https://cdn.vox-cdn.com/thumbor/-M7kTfkbogwZxKao8iYPjutzzQQ=/0x0:2040x1356/2000x1333/filters:focal(977x727:978x728)/cdn3.vox-cdn.com/uploads/chorus_asset/file/8048749/DSC03809.jpg",
   "https://www.wsupercars.com/thumbnails/Peugeot/2004-Peugeot-907-Concept-001.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/3/39/Nissan_GT-R_%28Facelift%29_%E2%80%93_Frontansicht%2C_9._April_2011%2C_D%C3%BCsseldorf.jpg"
+  "https://upload.wikimedia.org/wikipedia/commons/3/39/Nissan_GT-R_%28Facelift%29_%E2%80%93_Frontansicht%2C_9._April_2011%2C_D%C3%BCsseldorf.jpg",
+  "https://www.desktopbackground.org/p/2014/12/27/877882_nature-archives-page-7-of-20-free-wallpapers-full-hd-1080p_5120x3200_h.jpg",
+  "https://www.chromethemer.com/download/hd-wallpapers/dragon-ball-super-super-7680x4320.jpg",
+  "https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/dbs-goku-chromebook-wallpaper.jpg",
+  "https://images.alphacoders.com/789/789452.jpg",
+  "https://images3.alphacoders.com/128/1283573.jpg",
+  "https://images2.alphacoders.com/711/711450.jpg",
+  "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=2160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=3383&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ];

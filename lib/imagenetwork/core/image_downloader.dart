@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:ui';
 import 'package:download_image_isolate/imagenetwork/core/image_state.dart';
@@ -17,10 +16,9 @@ class ImageDownloader {
   final _imagesMap = <String, ImageState>{};
   final _imagesStream = StreamController<Map<String, ImageState>>.broadcast();
 
-
   Future<void> _init() async {
-    if(_completerInitIsolate?.isCompleted == true) return;
-    if(_completerInitIsolate == null){
+    if (_completerInitIsolate?.isCompleted == true) return;
+    if (_completerInitIsolate == null) {
       _completerInitIsolate = Completer();
     } else {
       await _completerInitIsolate!.future;
@@ -38,16 +36,16 @@ class ImageDownloader {
       }
     });
     final result = await receivePort.first;
-    if(result == true) {
+    if (result == true) {
       _completerInitIsolate!.complete();
     }
   }
 
-  void enableIsolates(bool enable){
+  void enableIsolates(bool enable) {
     _useIsolates = enable;
   }
 
-  void clear(){
+  void clear() {
     _imagesMap.clear();
   }
 
@@ -81,8 +79,7 @@ class ImageDownloader {
     final request = http.Request('GET', Uri.parse(url));
     final response = await httpClient.send(request);
     List<int> bytes = [];
-    response.stream.listen(
-      (List<int> chunk) {
+    response.stream.listen((List<int> chunk) {
         // Update progress
         bytes.addAll(chunk);
         final progress = bytes.length / response.contentLength!;
@@ -98,7 +95,7 @@ class ImageDownloader {
     );
   }
 
-  static void _downloadImageIsolate(SendPort sendPort) async {
+  static void _downloadImageIsolate(SendPort sendPort) {
     // Create a receive port to listen for download tasks
     final taskPort = ReceivePort();
 
@@ -108,7 +105,7 @@ class ImageDownloader {
     sendPort.send(true);
 
     // Listen for incoming download tasks
-    await for (var message in taskPort) {
+    taskPort.listen((message) async {
       if (message is Map) {
         final url = message['url'] as String;
         final replyTo = message['port'] as SendPort;
@@ -136,6 +133,6 @@ class ImageDownloader {
           cancelOnError: true,
         );
       }
-    }
+    });
   }
 }
