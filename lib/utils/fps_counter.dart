@@ -1,5 +1,14 @@
 
+import 'dart:async';
+
 import 'package:flutter/scheduler.dart';
+
+class FpsData {
+  final double fps;
+  final double averageFPS;
+
+  FpsData(this.fps, this.averageFPS);
+}
 
 class FPSCounter {
   int _frameCount = 0;
@@ -7,6 +16,7 @@ class FPSCounter {
   int _fpsCount = 0;
   Duration _startTime = Duration.zero;
   bool _shouldDoWork = false;
+  final fpsState = StreamController<FpsData>.broadcast();
 
   void init() {
     SchedulerBinding.instance.addPersistentFrameCallback((timeStamp) {
@@ -27,6 +37,7 @@ class FPSCounter {
         _startTime = timeStamp;
         _frameCount = 0;
         print('Current FPS: $fps, Average FPS: $averageFPS');
+        fpsState.add(FpsData(fps, averageFPS));
       }
     });
   }
@@ -39,6 +50,7 @@ class FPSCounter {
     _shouldDoWork = false;
     _totalFPS = 0;
     _fpsCount = 0;
+    fpsState.add(FpsData(0, 0));
   }
 }
 

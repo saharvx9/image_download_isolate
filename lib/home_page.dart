@@ -1,11 +1,9 @@
-import 'package:download_image_isolate/fps_counter.dart';
+import 'package:download_image_isolate/utils/fps_counter.dart';
 import 'package:download_image_isolate/imagenetwork/concurrency_image_netowrk.dart';
 import 'package:download_image_isolate/imagenetwork/core/image_downloader.dart';
-import 'package:download_image_isolate/infinite_animation.dart';
+import 'package:download_image_isolate/widgets/infinite_animation.dart';
 import 'package:download_image_isolate/local_images.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,9 +67,20 @@ class _HomePageState extends State<HomePage> {
                   child: const Text("Clear")),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: StreamBuilder<FpsData>(
+                stream: _fpsCounter.fpsState.stream,
+                initialData: FpsData(0, 0),
+                builder: (context, snapshot) {
+                  final state = snapshot.data!;
+                  return Text(
+                      "Current FPS: ${state.fps.toStringAsFixed(2)}, Average FPS: ${state.averageFPS.toStringAsFixed(2)}");
+                }),
+          ),
           const Padding(
-            padding: EdgeInsets.only(top:100.0,bottom: 50),
-            child: InfiniteAnimation(),
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: InfiniteAnimationWidget(),
           ),
           Expanded(
             child: GridView.builder(
@@ -79,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 4, crossAxisSpacing: 2, mainAxisSpacing: 2),
                 padding: EdgeInsets.zero,
                 itemCount: _images.length,
-                itemBuilder: (_, index) => ConcurrencyImageNetwork(url: _images[index])),
+                itemBuilder: (_, index) => ConcurrencyImageNetwork(key: ValueKey(_images[index]), url: _images[index])),
           ),
         ],
       ),

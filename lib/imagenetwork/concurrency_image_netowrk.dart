@@ -31,11 +31,11 @@ class _ConcurrencyImageNetworkState extends State<ConcurrencyImageNetwork> {
             ),
             child: switch (state) {
               Result(image: final image) => SizedBox.expand(
-                child: Image.memory(
+                  child: Image.memory(
                     image,
                     fit: BoxFit.fill,
                   ),
-              ),
+                ),
               Loading(progress: final progress) => Stack(
                   alignment: Alignment.center,
                   children: [
