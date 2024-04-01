@@ -1,5 +1,7 @@
 # Flutter Isolate Image Downloader
 
+https://github.com/saharvx9/image_download_isolate/assets/35892162/547e7718-e60e-4296-b81f-b0a2656a5e29
+
 ## Overview
 This Flutter app showcases the effectiveness of using Dart Isolates for intensive tasks like image downloading. It compares the app's performance, particularly in terms of Frames Per Second (FPS), when downloading images with and without the use of isolates. Utilizing `IsolateNameServer.registerPortWithName`, the app maintains a responsive UI by offloading heavy network operations to a background isolate.
 
