@@ -57,26 +57,28 @@ class ImageDownloader {
   }
 
   Stream<ImageState> downLoadImage(String url) async* {
-    if (_imagesMap.containsKey(url)) {
-      yield* _imagesStream.map((event) => event[url] ?? Loading(url, 0));
-    } else {
+    if (!_imagesMap.containsKey(url)) {
       if (_useIsolates) {
-        await _init();
-
-        // Use the IsolateNameServer to find the download manager's port
-        final managerPort = IsolateNameServer.lookupPortByName(_isolateName);
-        if (managerPort != null) {
-          // Send a new download task
-          managerPort.send({'url': url, 'port': _updatePort.sendPort});
-          // You can send more tasks to the same manager at any time
-        } else {
-          print('$_isolateName not found.');
-          throw ArgumentError("$_isolateName not found.");
-        }
+        await _sendImageIsolate(url);
       } else {
-        _downloadImageRegular(url);
+        await _downloadImageRegular(url);
       }
-      yield* _imagesStream.map((event) => event[url] ?? Loading(url, 0));
+    }
+    yield* _imagesStream.map((event) => event[url] ?? Loading(url, 0));
+  }
+
+  Future<void> _sendImageIsolate(String url) async {
+    await _init();
+
+    // Use the IsolateNameServer to find the download manager's port
+    final managerPort = IsolateNameServer.lookupPortByName(_isolateName);
+    if (managerPort != null) {
+      // Send a new download task
+      managerPort.send({'url': url, 'port': _updatePort.sendPort});
+      // You can send more tasks to the same manager at any time
+    } else {
+      print('$_isolateName not found.');
+      throw ArgumentError("$_isolateName not found.");
     }
   }
 
@@ -124,7 +126,7 @@ class ImageDownloader {
   }
 
   /// Download an image using the regular http package without isolates
-  void _downloadImageRegular(String url) async {
+  Future<void> _downloadImageRegular(String url) async {
     final httpClient = http.Client();
     final request = http.Request('GET', Uri.parse(url));
     final response = await httpClient.send(request);

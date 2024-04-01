@@ -54,5 +54,13 @@ const images = [
   "https://www.pngmart.com/files/10/Glossy-Apple-Logo-PNG-Image.png",
   "https://e1.pngegg.com/pngimages/274/400/png-clipart-mariposas-blue-and-black-butterfly.png",
   "https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg",
-  "https://w7.pngwing.com/pngs/24/2/png-transparent-dog-puppy-dog-mammal-animals-cat-like-mammal-thumbnail.png"
+  "https://w7.pngwing.com/pngs/24/2/png-transparent-dog-puppy-dog-mammal-animals-cat-like-mammal-thumbnail.png",
+  "https://cdn.sanity.io/images/599r6htc/localized/b02a4311b61e0210145f2a0fe80bd87bef244f98-540x305.png",
+  "https://static.wixstatic.com/media/afd522_91bd4b1067ba4184b538e1102c781c6c~mv2.png/v1/crop/x_0,y_0,w_726,h_914/fill/w_320,h_404,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Yosi%202.png",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0LGTXU9TJNsT5AYUi17HYtZ9ZBA5kT0JiDlkiOTXVog&s",
+  "https://lavido.b-cdn.net/wp-content/uploads/2023/07/%D7%9E%D7%A8%D7%A7%D7%9D-%D7%A1%D7%A8%D7%95%D7%9D2-1-820x820.png.webp",
+  "https://images.contentstack.io/v3/assets/blt02fb52e5e7a6fbb9/bltc6e9db7225059609/613b936b773f99381f743409/DFS_Tournament.png",
+  "https://www.apple.com/v/ipad/home/ci/images/meta/ipad__o3qwbzdfrlmy_og.png",
+  "https://static.wixstatic.com/media/387be7_99d694da957a459f881fb1446ad1596a~mv2.png/v1/fill/w_640,h_464,al_bl,q_85,usm_0.66_1.00_0.01,enc_auto/387be7_99d694da957a459f881fb1446ad1596a~mv2.png",
+  "https://assets-gnp-ssl.gonoodle.com/champs/54/phase_image_4s/Om_Petalhead_4.original_1690846366.png?1690846366"
 ];
